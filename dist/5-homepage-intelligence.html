@@ -287,6 +287,9 @@
 
   // Stock lookup
   var miForm = document.getElementById('mi-search');
+  if (miForm && window.matchMedia && window.matchMedia('(max-width: 520px)').matches) {
+    document.getElementById('mi-q').placeholder = 'e.g. TCS or AAPL';
+  }
   if (miForm) {
     miForm.addEventListener('submit', function (e) {
       e.preventDefault();
