@@ -9,7 +9,8 @@
 .wt-nav .wt-link.on,.wt-nav .wt-link:hover{color:var(--wt-accent);border-bottom-color:var(--wt-accent)}
 .wt-search{display:flex;flex-wrap:wrap;gap:6px;margin-left:auto}
 .wt-search select,.wt-search input{height:44px;border:1px solid var(--wt-line);border-radius:6px;padding:0 10px;font:inherit;font-size:16px;background:#fff;color:var(--wt-ink)}
-.wt-search input{width:240px;max-width:100%}
+.wt-search select{width:auto;max-width:160px;flex:none;margin:0}
+.wt-search input{width:240px;max-width:100%;margin:0}
 .wt-search button{height:44px;padding:0 18px;border:0;border-radius:6px;background:var(--wt-accent);color:#fff;font:inherit;font-weight:600;cursor:pointer}
 .wt-search select:focus,.wt-search input:focus,.wt-search button:focus{outline:2px solid var(--wt-accent);outline-offset:2px}
 .wt-tape{margin:8px 0 4px;min-height:46px}
@@ -30,7 +31,7 @@
 .wt-banner{background:var(--wt-soft);border:1px solid var(--wt-line);border-radius:8px;padding:10px 14px;font-size:14px;margin:12px 0}
 .wt-foot{border-top:1px solid var(--wt-line);margin-top:30px;padding-top:14px;font-size:13px;color:var(--wt-muted)}
 .wt-hide{display:none!important}
-@media (max-width:700px){.wt-search{margin-left:0;width:100%}.wt-search input{flex:1}.wt-mkt h1{font-size:25px}}
+@media (max-width:700px){.wt-nav .wt-brand{flex-basis:100%}.wt-search{margin-left:0;width:100%;flex-wrap:nowrap}.wt-search input{flex:1;width:auto}.wt-mkt h1{font-size:25px}}
 </style>
 <div class="wt-mkt">
 <nav class="wt-nav" aria-label="Markets">
