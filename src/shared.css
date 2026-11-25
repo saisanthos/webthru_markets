@@ -1,6 +1,7 @@
 .wt-mkt{--wt-accent:#2962ff;--wt-ink:#131722;--wt-muted:#5d606b;--wt-line:#e0e3eb;--wt-soft:#f5f7fb;max-width:1240px;margin:0 auto;padding:0 16px 32px;color:var(--wt-ink);font-family:inherit;font-size:16px;line-height:1.5}
 .wt-mkt *{box-sizing:border-box;min-width:0}
-.wt-mkt a{color:var(--wt-accent)}
+div.wt-mkt a{color:var(--wt-accent);text-decoration:none}
+div.wt-mkt .wt-foot a{text-decoration:underline}
 .wt-nav{display:flex;flex-wrap:wrap;align-items:center;gap:8px 22px;padding:14px 0 10px;border-bottom:1px solid var(--wt-line)}
 .wt-nav .wt-brand{font-weight:700;font-size:18px;color:var(--wt-ink);text-decoration:none;margin-right:6px}
 .wt-nav .wt-link{color:var(--wt-ink);text-decoration:none;font-weight:600;padding:8px 0;border-bottom:2px solid transparent}
@@ -19,11 +20,11 @@
 .wt-grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr))}
 .wt-card{border:1px solid var(--wt-line);border-radius:8px;padding:14px;background:#fff}
 .wt-tabs{display:flex;flex-wrap:wrap;gap:6px 18px;padding:10px 0;border-bottom:1px solid var(--wt-line);margin:8px 0 4px;position:sticky;top:0;background:#fff;z-index:2}
-.wt-tabs a{text-decoration:none;font-weight:600;color:var(--wt-ink);padding:6px 0}
-.wt-tabs a:hover{color:var(--wt-accent)}
+.wt-mkt .wt-tabs a{text-decoration:none;font-weight:600;color:var(--wt-ink);padding:6px 0}
+.wt-mkt .wt-tabs a:hover{color:var(--wt-accent)}
 .wt-chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 0}
-.wt-chips a{display:inline-block;padding:6px 12px;border:1px solid var(--wt-line);border-radius:999px;text-decoration:none;color:var(--wt-ink);font-size:14px;background:var(--wt-soft)}
-.wt-chips a:hover{border-color:var(--wt-accent);color:var(--wt-accent)}
+.wt-mkt .wt-chips a{display:inline-block;padding:6px 12px;border:1px solid var(--wt-line);border-radius:999px;text-decoration:none;color:var(--wt-ink);font-size:14px;background:var(--wt-soft)}
+.wt-mkt .wt-chips a:hover{border-color:var(--wt-accent);color:var(--wt-accent)}
 .wt-chips span{font-size:13px;color:var(--wt-muted);align-self:center;margin-right:2px}
 .wt-note{font-size:13px;color:var(--wt-muted);margin:8px 0 0}
 .wt-banner{background:var(--wt-soft);border:1px solid var(--wt-line);border-radius:8px;padding:10px 14px;font-size:14px;margin:12px 0}
