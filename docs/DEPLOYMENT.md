@@ -22,6 +22,16 @@ With the block editor, use a **Custom HTML** block instead of the Elementor HTML
 
 Add the Markets page to the site's main menu once all four pages are published.
 
+## Homepage section
+
+`dist/5-homepage-intelligence.html` is a self-contained Market Intelligence block for the homepage. It brings its own styles and links into the Markets pages, so publish those first.
+
+1. Open the homepage with Elementor.
+2. Add an **HTML** widget where the section should appear (or replace an earlier Markets block with it) and paste the full contents of the file.
+3. Update the page.
+
+Use the HTML widget, not the Text Editor widget: the Text Editor can rewrite the script when the widget is opened and saved again.
+
 ## Checks after publishing
 
 - `/markets/symbol/?tvwidgetsymbol=BSE:RELIANCE` shows Reliance Industries with an end-of-day note.

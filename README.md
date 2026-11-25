@@ -15,6 +15,7 @@ WebThru Markets brings a full markets experience to webthruservices.com: live ti
 - **Symbol search**: search by ticker with an India or USA market switch. NSE symbols are routed to their BSE listing automatically.
 - **Linked navigation**: click a stock in any market list to open its symbol page.
 - **Responsive layout**: wide desktop grids reflow to a single column on phones.
+- **Homepage section**: a branded Market Intelligence block for webthruservices.com with a live ticker, market overview, stock lookup and links into the platform.
 - **Zero running cost**: no backend, no API keys, no data fees.
 
 ## Screenshots
@@ -35,6 +36,7 @@ WebThru Markets brings a full markets experience to webthruservices.com: live ti
 | India | `/markets/india/` | Sensex and rupee charts, leading stocks by sector, Sensex heatmap, BSE movers, India screener, Indian companies listed in the US, India calendar |
 | USA | `/markets/usa/` | Index charts, largest stocks and ETFs, S&P 500 heatmap, movers, US screener, market news, US calendar |
 | Symbol | `/markets/symbol/?tvwidgetsymbol=EXCHANGE:TICKER` | Price header, candlestick chart, technical ratings, company profile, financials, news |
+| Homepage section | `/` | WebThru Market Intelligence: live ticker, market overview, stock lookup, Markets / Quant research / Analytics for finance |
 
 ## How it works
 
@@ -73,12 +75,14 @@ Vanilla JavaScript, CSS, Python (build), TradingView widgets, WordPress with Ele
 │   ├── 1-markets-overview.html
 │   ├── 2-markets-india.html
 │   ├── 3-markets-usa.html
-│   └── 4-markets-symbol.html
+│   ├── 4-markets-symbol.html
+│   └── 5-homepage-intelligence.html
 ├── docs/
 │   ├── DEPLOYMENT.md     deployment and configuration
 │   └── screenshots/
 └── src/
-    ├── shared.css        design tokens and layout
+    ├── shared.css        design tokens and layout (Markets pages)
+    ├── intelligence.css  styles for the homepage section
     ├── shared.js         widget layer, search, routing
     ├── nav.html          markets navigation and search bar
     ├── footer.html       data notes and disclaimer
