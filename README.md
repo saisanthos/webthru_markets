@@ -1,68 +1,111 @@
-# WebThru Markets: free markets section for WordPress
+# WebThru Markets
 
-Four pages for India and US markets, built from TradingView's free widgets. Nothing costs money.
+Market data, charts and technical analysis for Indian and US markets, built into the [WebThru Services](https://webthruservices.com) website.
 
-| File | Page address | What it shows |
+![WebThru Markets overview](docs/screenshots/overview.jpg)
+
+WebThru Markets brings a full markets experience to webthruservices.com: live tickers, sector heatmaps, stock screeners, economic calendars and a detail page for every stock with multi-timeframe technical ratings. It runs inside the existing WordPress site, with no servers to run and no data subscriptions to pay for.
+
+## Features
+
+- **Markets overview**: Indian and US indices, commodities, crypto and forex on one screen, with an India and US economic calendar and S&P 500 and Sensex heatmaps.
+- **India and USA dashboards**: index charts, leading stocks by sector, market movers, stock screeners and a country economic calendar.
+- **Symbol pages**: price header with key statistics, a full candlestick chart with drawing tools and indicators, company profile, financials and news.
+- **Technical ratings**: oscillator, moving-average and summary gauges with Buy, Neutral and Sell signal counts, from 1-minute to monthly timeframes.
+- **Symbol search**: search by ticker with an India or USA market switch. NSE symbols are routed to their BSE listing automatically.
+- **Linked navigation**: click a stock in any market list to open its symbol page.
+- **Responsive layout**: wide desktop grids reflow to a single column on phones.
+- **Zero running cost**: no backend, no API keys, no data fees.
+
+## Screenshots
+
+| Symbol page | Technical ratings |
+|---|---|
+| ![Reliance Industries symbol page](docs/screenshots/symbol-chart.jpg) | ![Technical ratings and company data](docs/screenshots/symbol-technicals.jpg) |
+| **India dashboard** | **Sensex heatmap by sector** |
+| ![India dashboard](docs/screenshots/india.jpg) | ![Sensex heatmap](docs/screenshots/india-heatmap.jpg) |
+| **USA dashboard** | **S&P 500 symbol page** |
+| ![USA dashboard](docs/screenshots/usa.jpg) | ![S&P 500 symbol page](docs/screenshots/symbol-sp500.jpg) |
+
+## Pages
+
+| Page | Address | What it shows |
 |---|---|---|
-| `dist/1-markets-overview.html` | `/markets/` | Ticker tape, market overview (India, USA, commodities, crypto, forex), economic calendar, S&P 500 and Sensex heatmaps, top stories, US movers |
-| `dist/2-markets-india.html` | `/markets/india/` | Sensex chart, leading Indian stocks by sector, Sensex heatmap, BSE movers, India screener, Indian companies listed in the US, India calendar |
-| `dist/3-markets-usa.html` | `/markets/usa/` | Index charts, largest stocks and ETFs, S&P 500 heatmap, movers, US screener, news, US calendar |
-| `dist/4-markets-symbol.html` | `/markets/symbol/` | One symbol: price header, candlestick chart, technical gauges (1 minute to monthly), company profile, financials, news |
+| Overview | `/markets/` | Ticker tape, multi-market overview, economic calendar, S&P 500 and Sensex heatmaps, top stories, US movers |
+| India | `/markets/india/` | Sensex and rupee charts, leading stocks by sector, Sensex heatmap, BSE movers, India screener, Indian companies listed in the US, India calendar |
+| USA | `/markets/usa/` | Index charts, largest stocks and ETFs, S&P 500 heatmap, movers, US screener, market news, US calendar |
+| Symbol | `/markets/symbol/?tvwidgetsymbol=EXCHANGE:TICKER` | Price header, candlestick chart, technical ratings, company profile, financials, news |
 
-Each file in `dist/` is a complete block of code (styles, layout and script). You paste one file into one page.
+## How it works
 
-## Setup (about 20 minutes)
+```
+src/                      shared styles, navigation, widget layer, page layouts
+  └── build.py  ──────►   dist/   one self-contained embed per page
+                            └──►  WordPress pages under /markets/
+```
 
-You need to be logged in to WordPress as an Administrator. Other roles can't save code that contains scripts.
+- **Widget layer.** A small rendering layer (`mount()` in `src/shared.js`) builds every chart, list, gauge and heatmap from a config object, so each page is a short description of what to show.
+- **Build step.** `build.py` combines the shared styles, navigation, footer and scripts with each page's layout into one self-contained embed per page. Each embed drops into a WordPress page with no plugins or theme changes.
+- **Symbol routing.** The symbol page reads the symbol from its URL, validates it, maps NSE symbols to BSE, and shows only the sections that apply: company data for stocks, news where coverage exists.
+- **Market data and charting** are provided by TradingView.
 
-1. **Create the parent page.** Pages > Add New, title **Markets**, address (slug) `markets`. Click **Edit with Elementor**.
-   In Page Settings (gear icon) set Page Layout to **Elementor Full Width** and turn on **Hide Title**.
-   Drag in an **HTML** widget, open `1-markets-overview.html` in a plain text editor, copy everything and paste it in.
-   Save as draft, preview, then publish.
-2. **Create the three child pages the same way**, each with Parent page set to Markets:
-   - India, slug `india`: paste `2-markets-india.html`
-   - USA, slug `usa`: paste `3-markets-usa.html`
-   - Symbol, slug `symbol`: paste `4-markets-symbol.html`
-3. **Add Markets to your main menu** (Appearance > Menus, or your Elementor header template).
-4. **Test it.** Open `/markets/symbol/?tvwidgetsymbol=BSE:RELIANCE`, click a stock in the Market overview list,
-   and search for `tcs` with "India (BSE)" selected.
+## Data coverage
 
-Not using Elementor? Add a **Custom HTML** block in the block editor and paste the file into it instead.
+| Market | Source | Updates |
+|---|---|---|
+| India: Sensex and BSE stocks | BSE | End of day |
+| USA: stocks and ETFs | NASDAQ, NYSE | Delayed |
+| USA: S&P 500, Nasdaq 100, Dow | FOREX.com index CFDs | Real time |
+| Forex, including USD/INR | ICE Data Services, FXCM | Real time |
+| Commodities: gold, silver, oil | OANDA | Real time |
+| Crypto | Binance | Real time |
 
-## If something looks wrong
+## Tech stack
 
-- **Widgets stay blank:** a speed or caching plugin is probably delaying the script (WP Rocket "Delay JavaScript execution",
-  LiteSpeed Cache, Autoptimize). Exclude the four Markets pages, or the word `tradingview`, from JavaScript delay, defer and combine. Then clear the cache.
-- **The code disappears after saving:** you're not logged in as an Administrator.
-- **Content looks squeezed:** set the Elementor section's Content Width to Full Width.
-- **Different page addresses:** change `'/markets/symbol/'` on the `var SYMBOL_PAGE` line in `src/shared.js` and the
-  menu links in `src/nav.html`, then rebuild (see below).
-- **Different accent colour:** change `--wt-accent:#2962ff` at the start of `src/shared.css`, then rebuild.
+Vanilla JavaScript, CSS, Python (build), TradingView widgets, WordPress with Elementor.
 
-## What the free widgets can't do (tested November 2026)
+## Project structure
 
-- NSE prices, including Nifty 50, are blocked ("Permission denied"). Indian stocks use BSE instead.
-  If someone opens an NSE symbol, the symbol page switches to the same company on BSE and says so.
-- BSE prices are end-of-day: they update once after the market closes.
-- There is no news for Indian stocks, so the symbol page hides the News section for them.
-- The official S&P 500 index is blocked, so US indices use FOREX.com CFD prices that track the S&P 500, Nasdaq 100 and Dow.
-  US stock prices are delayed.
-- Clicking a heatmap block did not open the symbol page in testing. Clicking a stock in the overview lists and using the search box do.
-- TradingView's logo and links stay on the widgets. That's the condition for using them free.
+```
+.
+├── build.py              builds dist/ from src/
+├── dist/                 deployable page embeds
+│   ├── 1-markets-overview.html
+│   ├── 2-markets-india.html
+│   ├── 3-markets-usa.html
+│   └── 4-markets-symbol.html
+├── docs/
+│   ├── DEPLOYMENT.md     deployment and configuration
+│   └── screenshots/
+└── src/
+    ├── shared.css        design tokens and layout
+    ├── shared.js         widget layer, search, routing
+    ├── nav.html          markets navigation and search bar
+    ├── footer.html       data notes and disclaimer
+    └── pages/            layout (.html) and content (.js) for each page
+```
 
-Every page footer says the content is for information only and is not investment advice. Keep that.
-
-## Editing the pages
-
-Don't edit the files in `dist/` by hand. Edit the files in `src/`, then rebuild:
+## Development
 
 ```bash
-cd webthru_markets
 python3 build.py
 ```
 
-- `src/shared.css`, `src/shared.js`, `src/nav.html`, `src/footer.html`: shared by all four pages
-  (the `mount()` helper in `shared.js` creates every widget)
-- `src/pages/<page>.html` and `src/pages/<page>.js`: the layout and the symbols for each page
+Edit files in `src/`, rebuild, then deploy the updated files from `dist/`. See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for deployment and configuration.
 
-After rebuilding, paste the changed file from `dist/` into its WordPress page again.
+## Roadmap
+
+- [x] Markets section on webthruservices.com for India and USA
+- [ ] Own market data pipeline and API for live prices and candles
+- [ ] In-house technical analysis engine and candlestick pattern scanner
+- [ ] Market news and analysis from the WebThru team
+- [ ] AI market assistant
+- [ ] User accounts, watchlists and price alerts
+
+## Disclaimer
+
+WebThru Markets is for information only and is not investment advice. Market data and charts are provided by TradingView and its data providers.
+
+---
+
+© 2026 [WebThru Services](https://webthruservices.com)
