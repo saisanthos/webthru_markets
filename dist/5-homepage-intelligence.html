@@ -1,0 +1,318 @@
+<!-- WebThru Markets: Market Intelligence section. Paste into an Elementor HTML widget on the homepage -->
+<style>
+.wt-mi{--mi-bg:#05050b;--mi-card:#0d0d18;--mi-line:#262640;--mi-ink:#f4f4fb;--mi-muted:#a3a6bf;--mi-hero:linear-gradient(90deg,#8ea2ff,#c084fc);--mi-label:linear-gradient(90deg,#6a5acd,#ff758c,#ff4500);box-sizing:border-box;max-width:1140px;margin:40px auto;padding:clamp(28px,5vw,56px) clamp(18px,4vw,48px);background:var(--mi-bg);border-radius:24px;color:var(--mi-ink);font-family:'Readex Pro',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:16px;line-height:1.55;overflow:hidden}
+.wt-mi *{box-sizing:border-box;min-width:0}
+.wt-mi .mi-label{display:inline-block;margin:0 0 14px;font-size:15px;font-weight:600;letter-spacing:.02em;background:var(--mi-label);-webkit-background-clip:text;background-clip:text;color:transparent}
+.wt-mi h2.mi-title{margin:0 0 14px;font-family:inherit;font-size:clamp(30px,4.2vw,48px);line-height:1.1;font-weight:400;color:var(--mi-ink);text-wrap:balance;text-transform:none;letter-spacing:0}
+.wt-mi .mi-grad{background:var(--mi-hero);-webkit-background-clip:text;background-clip:text;color:transparent}
+.wt-mi .mi-lede{max-width:660px;margin:0 0 26px;color:var(--mi-muted);font-size:17px}
+.wt-mi .mi-actions{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 26px}
+.wt-mi a.mi-btn{display:inline-flex;align-items:center;min-height:46px;padding:0 22px;border-radius:999px;font-weight:500;font-size:16px;text-decoration:none;transition:opacity .15s}
+.wt-mi a.mi-btn:hover{opacity:.85}
+.wt-mi a.mi-primary{background:#fff;color:#05050b}
+.wt-mi a.mi-ghost{border:1px solid var(--mi-line);color:var(--mi-ink)}
+.wt-mi form.mi-search{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px;max-width:560px}
+.wt-mi .mi-search select,.wt-mi .mi-search input{height:46px;margin:0;border:1px solid var(--mi-line);border-radius:10px;background:var(--mi-card);color:var(--mi-ink);font:inherit;font-size:16px;padding:0 12px}
+.wt-mi .mi-search select{width:auto;flex:none}
+.wt-mi .mi-search input{flex:1;width:auto}
+.wt-mi .mi-search input::placeholder{color:#6f7290}
+.wt-mi .mi-search button{height:46px;margin:0;padding:0 20px;border:0;border-radius:10px;background:var(--mi-hero);color:#05050b;font:inherit;font-weight:600;cursor:pointer}
+.wt-mi .mi-search select:focus,.wt-mi .mi-search input:focus,.wt-mi .mi-search button:focus,.wt-mi a:focus{outline:2px solid #c084fc;outline-offset:2px}
+.wt-mi .mi-tape{min-height:46px;margin:0 0 22px;border-top:1px solid var(--mi-line);border-bottom:1px solid var(--mi-line)}
+.wt-mi .mi-grid{display:grid;gap:20px;grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+.wt-mi .mi-panel{background:var(--mi-card);border:1px solid var(--mi-line);border-radius:16px;padding:12px}
+.wt-mi .mi-pillars{display:grid;gap:14px;align-content:start}
+.wt-mi .mi-card{background:var(--mi-card);border:1px solid var(--mi-line);border-radius:16px;padding:18px 20px}
+.wt-mi .mi-card h3{margin:0 0 6px;font-family:inherit;font-size:19px;font-weight:500;color:var(--mi-ink);text-transform:none;letter-spacing:0}
+.wt-mi .mi-card p{margin:0 0 10px;color:var(--mi-muted);font-size:15px}
+.wt-mi .mi-card a{color:#c4b5fd;text-decoration:none;font-weight:500;font-size:15px}
+.wt-mi .mi-card a:hover{text-decoration:underline}
+.wt-mi .mi-tag{display:inline-block;padding:3px 10px;border-radius:999px;border:1px solid #4c3f7a;color:#c4b5fd;font-size:13px}
+.wt-mi .mi-note{margin:20px 0 0;color:#6f7290;font-size:13px}
+.wt-mi .mi-note a{color:#a3a6bf;text-decoration:underline}
+@media (max-width:900px){.wt-mi .mi-grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:520px){.wt-mi{border-radius:18px;margin:24px 0}.wt-mi .mi-search{flex-wrap:nowrap}.wt-mi .mi-search select{max-width:96px}.wt-mi .mi-search button{padding:0 14px}}
+@media (prefers-reduced-motion:reduce){.wt-mi a.mi-btn{transition:none}}
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600&amp;display=swap">
+<section class="wt-mi" aria-labelledby="mi-title">
+  <span class="mi-label">WebThru Market Intelligence</span>
+  <h2 class="mi-title" id="mi-title">Market intelligence for India and the US, <span class="mi-grad">powered by data and AI</span></h2>
+  <p class="mi-lede">Live prices, sector heatmaps and multi-timeframe technical ratings for Indian and US stocks, plus quant research and analytics from the WebThru data team.</p>
+
+  <div class="mi-actions">
+    <a class="mi-btn mi-primary" href="/markets/">Explore markets</a>
+    <a class="mi-btn mi-ghost" href="mailto:info@webthruservices.com?subject=Analytics%20for%20finance" id="mi-contact">Analytics for finance teams</a>
+  </div>
+
+  <form class="mi-search" id="mi-search" role="search">
+    <label for="mi-market" hidden>Market</label>
+    <select id="mi-market" aria-label="Market">
+      <option value="IN">India</option>
+      <option value="US">USA</option>
+    </select>
+    <label for="mi-q" hidden>Stock symbol</label>
+    <input id="mi-q" type="search" placeholder="Look up a stock, e.g. RELIANCE or AAPL" autocomplete="off" spellcheck="false" aria-label="Stock symbol">
+    <button type="submit">Search</button>
+  </form>
+
+  <div class="mi-tape" id="mi-tape"></div>
+
+  <div class="mi-grid">
+    <div class="mi-panel"><div id="mi-overview"></div></div>
+    <div class="mi-pillars">
+      <article class="mi-card">
+        <h3>Markets</h3>
+        <p>Charts, heatmaps, screeners and technical ratings from 1 minute to monthly, for India and the US.</p>
+        <a href="/markets/">Open markets &rarr;</a>
+      </article>
+      <article class="mi-card">
+        <h3>Quant research</h3>
+        <p>Forecast models for the Nifty 50 and Bitcoin, published with full backtests.</p>
+        <span class="mi-tag">Coming soon</span>
+      </article>
+      <article class="mi-card">
+        <h3>Analytics for finance</h3>
+        <p>Dashboards, forecasting and fraud-detection models built for financial teams.</p>
+        <a href="mailto:info@webthruservices.com?subject=Analytics%20for%20finance" class="mi-contact-link">Talk to us &rarr;</a>
+      </article>
+    </div>
+  </div>
+
+  <p class="mi-note">Charts and market data by <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">TradingView</a>. Indian prices are end-of-day from BSE; US stock prices are delayed. For information only, not investment advice.</p>
+</section>
+<script>
+(function () {
+  // ---- Settings you may want to change ----
+  // Address of the symbol detail page. Every widget sends clicks here.
+  var SITE = /^https?:$/.test(location.protocol) ? location.origin : 'https://webthruservices.com';
+  var SYMBOL_PAGE = SITE + '/markets/symbol/';
+  var THEME = 'light';   // 'light' or 'dark'
+  var LOCALE = 'en';
+  // -----------------------------------------
+
+  var SYMBOL_RE = /^([A-Z0-9_]{1,20}:)?[A-Z0-9_.!&\-]{1,30}$/;
+
+  function mount(id, file, cfg, height) {
+    var host = document.getElementById(id);
+    if (!host) return;
+    host.innerHTML = '';
+    // TradingView resets its own container to 100% height, so the fixed height goes on the outer box.
+    if (height) host.style.height = height + 'px';
+    var box = document.createElement('div');
+    box.className = 'tradingview-widget-container';
+    box.style.height = '100%';
+    var inner = document.createElement('div');
+    inner.className = 'tradingview-widget-container__widget';
+    inner.style.height = '100%';
+    box.appendChild(inner);
+    var s = document.createElement('script');
+    s.src = 'https://s3.tradingview.com/external-embedding/embed-widget-' + file + '.js';
+    s.async = true;
+    var base = { locale: LOCALE, colorTheme: THEME, isTransparent: true };
+    for (var k in cfg) base[k] = cfg[k];
+    s.text = JSON.stringify(base);
+    box.appendChild(s);
+    host.appendChild(box);
+  }
+
+  function symbolUrl(sym) {
+    return SYMBOL_PAGE + '?tvwidgetsymbol=' + encodeURIComponent(sym);
+  }
+
+  function tape(list) {
+    mount('wt-tape', 'ticker-tape', {
+      symbols: list.map(function (x) { return { proName: x[0], title: x[1] }; }),
+      showSymbolLogo: true,
+      displayMode: 'adaptive',
+      largeChartUrl: SYMBOL_PAGE
+    });
+  }
+
+  function overview(id, tabs, height) {
+    mount(id, 'market-overview', {
+      dateRange: '12M',
+      showChart: true,
+      showSymbolLogo: true,
+      showFloatingTooltip: false,
+      width: '100%',
+      height: '100%',
+      largeChartUrl: SYMBOL_PAGE,
+      tabs: tabs.map(function (t) {
+        return {
+          title: t[0],
+          originalTitle: t[0],
+          symbols: t[1].map(function (x) { return { s: x[0], d: x[1] }; })
+        };
+      })
+    }, height || 480);
+  }
+
+  function heatmap(id, dataSource, height) {
+    mount(id, 'stock-heatmap', {
+      dataSource: dataSource,
+      exchanges: [],
+      grouping: 'sector',
+      blockSize: 'market_cap_basic',
+      blockColor: 'change',
+      hasTopBar: false,
+      isDataSetEnabled: false,
+      isZoomEnabled: true,
+      hasSymbolTooltip: true,
+      isMonoSize: false,
+      width: '100%',
+      height: '100%',
+      symbolUrl: SYMBOL_PAGE
+    }, height || 520);
+  }
+
+  function movers(id, exchange, height) {
+    mount(id, 'hotlists', {
+      exchange: exchange,
+      dateRange: '12M',
+      showChart: true,
+      showSymbolLogo: true,
+      showFloatingTooltip: false,
+      width: '100%',
+      height: '100%',
+      largeChartUrl: SYMBOL_PAGE
+    }, height || 480);
+  }
+
+  function screener(id, market, height) {
+    mount(id, 'screener', {
+      market: market,
+      defaultColumn: 'overview',
+      defaultScreen: 'most_capitalized',
+      showToolbar: true,
+      width: '100%',
+      height: '100%',
+      largeChartUrl: SYMBOL_PAGE
+    }, height || 520);
+  }
+
+  function calendar(id, countries, height) {
+    mount(id, 'events', {
+      importanceFilter: '0,1',
+      countryFilter: countries,
+      width: '100%',
+      height: '100%'
+    }, height || 480);
+  }
+
+  function news(id, cfg, height) {
+    var c = { displayMode: 'regular', width: '100%', height: '100%' };
+    for (var k in cfg) c[k] = cfg[k];
+    mount(id, 'timeline', c, height || 480);
+  }
+
+  function chartOverview(id, list, height) {
+    mount(id, 'symbol-overview', {
+      symbols: list.map(function (x) { return [x[1], x[0] + '|12M']; }),
+      chartOnly: false,
+      width: '100%',
+      height: '100%',
+      showVolume: false,
+      showMA: false,
+      hideDateRanges: false,
+      hideMarketStatus: false,
+      hideSymbolLogo: false,
+      scalePosition: 'right',
+      scaleMode: 'Normal',
+      noTimeScale: false,
+      valuesTracking: '1',
+      changeMode: 'price-and-percent',
+      chartType: 'area',
+      lineWidth: 2,
+      dateRanges: ['1m|1D', '3m|1D', '12m|1D', '60m|1W', 'all|1M']
+    }, height || 440);
+  }
+
+  // Search box in the menu bar
+  var form = document.getElementById('wt-search');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var q = document.getElementById('wt-q');
+      var v = q.value.trim().toUpperCase().replace(/\s+/g, '');
+      if (!v) { q.focus(); return; }
+      var market = document.getElementById('wt-market').value;
+      if (v.indexOf(':') === -1 && market === 'IN') v = 'BSE:' + v;
+      if (!SYMBOL_RE.test(v)) { q.value = ''; q.placeholder = 'Letters and numbers only'; q.focus(); return; }
+      location.href = symbolUrl(v);
+    });
+  }
+
+  THEME = 'dark';
+
+  mount('mi-tape', 'ticker-tape', {
+    symbols: [
+      ['BSE:SENSEX', 'Sensex'], ['FOREXCOM:SPXUSD', 'S&P 500'], ['FOREXCOM:NSXUSD', 'Nasdaq 100'],
+      ['FOREXCOM:DJI', 'Dow Jones'], ['FX_IDC:USDINR', 'USD/INR'], ['OANDA:XAUUSD', 'Gold'],
+      ['BINANCE:BTCUSDT', 'Bitcoin']
+    ].map(function (x) { return { proName: x[0], title: x[1] }; }),
+    showSymbolLogo: true,
+    displayMode: 'adaptive',
+    largeChartUrl: SYMBOL_PAGE
+  });
+
+  mount('mi-overview', 'market-overview', {
+    dateRange: '12M',
+    showChart: true,
+    showSymbolLogo: true,
+    showFloatingTooltip: false,
+    width: '100%',
+    height: '100%',
+    largeChartUrl: SYMBOL_PAGE,
+    plotLineColorGrowing: 'rgba(192, 132, 252, 1)',
+    plotLineColorFalling: 'rgba(192, 132, 252, 1)',
+    belowLineFillColorGrowing: 'rgba(192, 132, 252, 0.14)',
+    belowLineFillColorFalling: 'rgba(192, 132, 252, 0.14)',
+    belowLineFillColorGrowingBottom: 'rgba(192, 132, 252, 0)',
+    belowLineFillColorFallingBottom: 'rgba(192, 132, 252, 0)',
+    gridLineColor: 'rgba(38, 38, 64, 0)',
+    scaleFontColor: 'rgba(163, 166, 191, 1)',
+    symbolActiveColor: 'rgba(142, 162, 255, 0.12)',
+    tabs: [
+      ['India', [['BSE:SENSEX', 'Sensex'], ['BSE:RELIANCE', 'Reliance Industries'], ['BSE:HDFCBANK', 'HDFC Bank'],
+        ['BSE:TCS', 'TCS'], ['BSE:INFY', 'Infosys']]],
+      ['USA', [['FOREXCOM:SPXUSD', 'S&P 500'], ['FOREXCOM:NSXUSD', 'Nasdaq 100'], ['FOREXCOM:DJI', 'Dow Jones 30'],
+        ['NASDAQ:NVDA', 'Nvidia'], ['NASDAQ:AAPL', 'Apple']]],
+      ['Commodities', [['OANDA:XAUUSD', 'Gold'], ['OANDA:XAGUSD', 'Silver'], ['OANDA:WTICOUSD', 'WTI crude oil']]],
+      ['Crypto', [['BINANCE:BTCUSDT', 'Bitcoin'], ['BINANCE:ETHUSDT', 'Ethereum'], ['BINANCE:SOLUSDT', 'Solana']]]
+    ].map(function (t) {
+      return { title: t[0], originalTitle: t[0], symbols: t[1].map(function (x) { return { s: x[0], d: x[1] }; }) };
+    })
+  }, 440);
+
+  // Stock lookup
+  var miForm = document.getElementById('mi-search');
+  if (miForm) {
+    miForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var q = document.getElementById('mi-q');
+      var v = q.value.trim().toUpperCase().replace(/\s+/g, '');
+      if (!v) { q.focus(); return; }
+      if (v.indexOf(':') === -1 && document.getElementById('mi-market').value === 'IN') v = 'BSE:' + v;
+      if (!SYMBOL_RE.test(v)) { q.value = ''; q.placeholder = 'Letters and numbers only'; q.focus(); return; }
+      location.href = symbolUrl(v);
+    });
+  }
+
+  // "Analytics for finance" links scroll to the contact form when the page has one; otherwise they open email.
+  function contactHeading() {
+    var hs = document.querySelectorAll('h1, h2, h3');
+    for (var i = 0; i < hs.length; i++) {
+      if (/let.s connect|get in touch/i.test(hs[i].textContent)) return hs[i];
+    }
+    return null;
+  }
+  var links = document.querySelectorAll('#mi-contact, .wt-mi .mi-contact-link');
+  for (var i = 0; i < links.length; i++) {
+    links[i].addEventListener('click', function (e) {
+      var target = contactHeading();
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  }
+})();
+</script>
